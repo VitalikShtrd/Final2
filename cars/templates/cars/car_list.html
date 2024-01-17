@@ -1,0 +1,247 @@
+{% extends "cars/base.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1 style="margin-left: 500px" >Automista <a href="{% url 'cars:registration_page' %}" style="text-decoration: none; color: black; margin-left: 750px; border-radius: 10px; border: 3px solid black;" onmouseover="this.style.color='Black'; this.style.backgroundColor='White';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">User</a></h1>
+</header>
+<body>
+    <hr style="position: middle;
+  width: 60%;
+  height: 2px;
+  background-color: #000;
+  border: none;
+  transform: translateY(-50%);">
+    <h1 style="text-align: center;">Список предоставляемых нами автомобилей на продажу:</h1>
+    <hr style="position: middle;
+  width: 60%;
+  height: 2px;
+  background-color: #000;
+  border: none;
+  transform: translateY(-50%);">
+<h2 style="text-align: center;">Самые популярные:</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://avtotachki.com/wp-content/uploads/2020/11/440036_original.png" class="card-img-top" alt="BMW" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+<a href="{% url 'cars:bmw_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">BMW</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Mercedes-Benz_Star_2022.svg/1200px-Mercedes-Benz_Star_2022.svg.png" class="card-img-top" alt="Mercedes-Benz" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:mers_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Mercedes-Benz</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Volkswagen_logo_2019.svg/640px-Volkswagen_logo_2019.svg.png" class="card-img-top" alt="Volkswagen" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:volks_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Volkswagen</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://www.logotypes101.com/logos/197/CD7FD9914674E2565607529522B9C75C/renault2015_monotone.png" class="card-img-top" alt="renault" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:ren_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Renault</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="data:image/jpeg;base64,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" class="card-img-top" alt="Ford" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:ford_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Ford</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://www.audi-mediacenter.com/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_web_2880.jpg?1698171883" class="card-img-top" alt="Audi" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:audi_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Audi</a>
+                </p>
+            </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://static-00.iconduck.com/assets.00/skoda-icon-2048x2048-bss778ht.png" class="card-img-top" alt="Skoda" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:sko_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Skoda</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/nissan-brand-logo-1200x938-1594842850.jpg?crop=1.00xw:0.856xh;0.00173xw,0.0730xh&resize=980:*" class="card-img-top" alt="Nissan" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:niss_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Nissan</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Toyota_EU.svg/2560px-Toyota_EU.svg.png" class="card-img-top" alt="Toyota" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:toyo_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Toyota</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://di-uploads-pod5.dealerinspire.com/triplejsaipan/uploads/2018/05/HyundaiLogoStacked_4cblk-1024x659.gif" class="card-img-top" alt="Hyundai" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:hyu_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Hyundai</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Honda.svg/2560px-Honda.svg.png" class="card-img-top" alt="Honda" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:hon_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Honda</a>
+                </p>
+            </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://logowik.com/content/uploads/images/chevrolet6730.logowik.com.webp" class="card-img-top" alt="Chevrolet" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:chev_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Chevrolet</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://mirnakleek.com/files/product/0/170/170.jpg" class="card-img-top" alt="Mazda" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:maz_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Mazda</a>
+                </p>
+            </div>
+        </div>
+        </div>
+        </div>
+            </div>
+    <hr style="position: middle;
+  width: 60%;
+  height: 2px;
+  background-color: #000;
+  border: none;
+  transform: translateY(-50%);">
+<h3 style="text-align: center;">Менее популярные:</h3>
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://logowik.com/content/uploads/images/728_citroen.jpg" class="card-img-top" alt="citroen" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:cit_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Citroen</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="data:image/png;base64,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" class="card-img-top" alt="Volvo" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:vol_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Volvo</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://i.ebayimg.com/images/g/-4MAAOSw~Jlh~WI5/s-l1200.webp" class="card-img-top" alt="Fiat" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:fiat_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Fiat</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://logos-world.net/wp-content/uploads/2021/10/Lexus-Logo.png" class="card-img-top" alt="Lexus" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:lex_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Lexus</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://cdn.worldvectorlogo.com/logos/jeep-3.svg" class="card-img-top" alt="jeep" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:jeep_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Jeep</a>
+                </p>
+            </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Land_Rover_logo_black.svg/2560px-Land_Rover_logo_black.svg.png" class="card-img-top" alt="LandRover" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:lr_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Land Rover</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://static.wikia.nocookie.net/logopedia/images/1/19/Chery_1997.svg/revision/latest?cb=20210816181335" class="card-img-top" alt="Chery" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:che_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Chery</a>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 9rem; margin: 10px; border: 1px solid #000; text-align: center;">
+            <img src="https://1000logos.net/wp-content/uploads/2021/10/Dacia-logo.jpg" class="card-img-top" alt="Dacia" style="max-width: 50px; max-height: 50px; width: 50px; height: 50px; background-color: #f0f0f0; display: block; margin: 0 auto;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'cars:dac_page' %}" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Dacia</a>
+                </p>
+            </div>
+        </div>
+            </div>
+    </div>
+<hr style="position: middle;
+  width: 60%;
+  height: 2px;
+  background-color: #000;
+  border: none;
+  transform: translateY(-50%);">
+<div>
+    <a href="{% url 'cars:car_form_page' %}" style="text-decoration: none; color: black; margin-left: 550px; border-radius: 10px; border: 3px solid black; font-size: 40px; " onmouseover="this.style.color='Black'; this.style.backgroundColor='White';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Добавить собственный транспорт на продажу</a>
+    <hr style="position: middle;
+  width: 60%;
+  height: 2px;
+  background-color: #000;
+  border: none;
+  transform: translateY(-50%);">
+</div>
+</body>
+<footer>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+<div style="text-align: center;">
+    <h4>Automista©2023</h4>
+    <p><a href="https://www.instagram.com/automista/" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Instagram</a></p>
+    <p><a href="https://www.facebook.com/automista/" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">Facebook</a></p>
+    <p><a href="https://twitter.com/automista" style="text-decoration: none; color: black;" onmouseover="this.style.color='yellow'; this.style.backgroundColor='blue';" onmouseout="this.style.color='black'; this.style.backgroundColor='transparent';">X|Twitter</a></p>
+    </div>
+<div>
+    <p style="margin-left: 150px">Наши контактные данные:</p>
+    <p style="margin-left: 200px">+3809991168</p>
+    <p style="margin-left: 200px">+3806651645</p>
+</div>
+</div>
+
+</footer>
+    <ul>
+        {% for car in cars %}
+            <li>{{ car.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

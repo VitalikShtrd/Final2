@@ -1,0 +1,40 @@
+
+<form id="registrationForm" method="post" action="{% url 'cars:registration_page' %}" style="display: inline-block;">
+    {% csrf_token %}
+<div class="card" style="width: 30rem; margin: 10px; border: 1px solid #000; margin-left: 650px;margin-top: 20px ">
+    <br>
+    <div>
+        <label>Username:</label>
+        {{ form.username }}
+    </div>
+    <br>
+
+    <div>
+        <label>Email:</label>
+        {{ form.email }}
+    </div>
+    <br>
+
+    <div>
+        <label>Password:</label>
+        {{ form.password1 }}
+    </div>
+    <br>
+
+    <div>
+        <label>Confirm Password:</label>
+        {{ form.password2 }}
+    </div>
+    <br>
+
+    <button type="submit" id="registerButton">Register</button>
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#registerButton').on('click', function() {
+      $('#registrationForm').get(0).submit();
+    });
+  });
+</script>
