@@ -2,7 +2,9 @@ from . import views
 from .views import CarCreateView, car_list
 from django.urls import path
 from .views import car_form
-from .views import registration_page
+from .views import registration_view
+from django.contrib.auth.views import LoginView
+from django.urls import include
 
 app_name = 'cars'
 
@@ -36,5 +38,8 @@ urlpatterns = [
     path('create/', CarCreateView.as_view(), name='car_create'),
     path('car_form/', car_form, name='car_form'),
     path('car/list/', car_list, name='car_list'),
-    path('registration/', registration_page, name='registration_page'),
+    path('registration/', registration_view.as_view(), name='registration_page'),
+    path('login/', LoginView.as_view(), name='login_page'),
+    path('logout/', views.logout_user, name='logout'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

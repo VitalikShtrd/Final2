@@ -1,5 +1,10 @@
+
 from django.contrib import admin
-from .models import Car, CustomUser
+from django.contrib.auth import get_user_model
+from .models import Car
 
 admin.site.register(Car)
-admin.site.register(CustomUser)
+
+User = get_user_model()
+admin.site.unregister(User)
+admin.site.register(User)

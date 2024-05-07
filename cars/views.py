@@ -1,10 +1,12 @@
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from .forms import CustomUserCreationForm
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import CarForm
-from .models import Car, CustomUser
-
+from .models import Car
+from .forms import RegisterUserForm
 
 def bmw_page(request):
     return render(request, 'BMW.html')
@@ -75,7 +77,7 @@ def my_view(request):
 
 def car_list(request):
     cars = Car.objects.all()
-    return render(request, 'cars/car_list.html', {'cars': cars})
+    return render(request, 'cars/index.html', {'cars': cars})
 
 def car_detail(request, car_id):
     car = Car.objects.get(pk=car_id)
@@ -116,19 +118,33 @@ def car_create(request):
     return render(request, 'car_form.html', {'form': form})
 
 
+class DataMixin:
+    def get_user_context(self, title):
+        context = {
+            'user_title': title,
+        }
+        return context
+
+class registration_view(DataMixin, CreateView):
+    form_class = RegisterUserForm
+    template_name = 'registration_page.html'
+    success_url = reverse_lazy('login')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Registration')
+        return {**context, **c_def}
 
 
+class LoginUser(DataMixin, LoginView):
+    form_class = AuthenticationForm
+    template_name = 'login.html'
 
-def registration_page(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('some-success-url')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'registration_page.html', {'form': form})
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Авторизация")
+        return dict(list(context.items()) + list(c_def.items()))
+
 
 
 class CarCreateView(CreateView):
@@ -141,3 +157,10 @@ class CarCreateView(CreateView):
         return super().form_valid(form)
 
 
+def login_page(request):
+    return render(request, 'login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('cars/login')

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for brand in car_brands %}
+<h2>{{ brand.name }}</h2>
+<form method="post" action="{% url 'add_car_info' brand.id %}">
+  {% csrf_token %}
+  {{ car_info_form }}
+  <button type="submit">Добавить информацию</button>
+</form>
+{% endfor %}
+{% endblock %}
